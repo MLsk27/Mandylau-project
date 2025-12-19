@@ -1,0 +1,39 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.4;
+//节省gas fee
+contract saveGas {
+//112812,56590//uint256 public minimunusd=10;
+uint256 public constant MINIMUN_USD=10;
+//90631,34485最省fee
+//uint256 public constant minimunusd=10;//90643,34485
+
+//immutable用法   i_变量名 save gas fee
+address public immutable i_owner;//可知此为不可变的变量
+//一般搭配constructor使用
+constructor(){
+i_owner=msg.sender;
+}
+//所有owner都要换成i_owner
+}
+
+//未经允许的unauthorized 模板
+
+error Unauthorized();
+contract VendingMachine{
+    address payable owner=payable(msg.sender);
+
+    function withdraw()public{
+        if(msg.sender !=owner)
+        revert Unauthorized();
+        owner.transfer(address(this).balance);
+
+    }
+    //notice error要放在合约外，使用error还要把modifier里的require改成if
+    
+    modifier onlyowner{
+        //require(msg.sender==i_owner,"Sender is not owner!");
+        if(msg.sender != i_owner){
+revert notOwner();
+_;
+        }
+    }
