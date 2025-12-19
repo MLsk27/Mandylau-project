@@ -1,0 +1,31 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+//this is a  usage solution of monlie data
+contract Buy{
+    address  private owner =0x5B38Da6a701c568545dCfcB03FcB875f56beddC4;
+    event Received(address, uint);
+    function getOwner()private  view returns(address){
+        return owner;
+    }
+    uint256 public PhoneNumber;
+    function writePhoneNumber(uint256 _phonenumber)public{
+       PhoneNumber= _phonenumber;
+    }
+    receive() external payable {
+            emit Received(msg.sender, msg.value);
+}
+bytes public comment;
+function createComment(string memory _comment)public {
+    comment = bytes(_comment);
+}
+function getComment()public view returns(bytes memory){
+return(comment);}
+function bytesToString() public view returns (string memory) {
+        // bytes转string：把字节数组转回文字
+        return string(comment);
+    }
+    function getcomment1() public view returns (bytes memory) {
+        // 获取动态字节数组
+        return comment;
+    }
+}
